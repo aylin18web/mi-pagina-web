@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Proyecto Integral</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffd6e8;
+        }
+
+.titulo {
+    text-align: center;
+    font-size: 34px;
+    font-family: 'Playfair Display', 'Georgia', serif;
+    color: #7b4ea3;
+    margin: 20px auto 30px;
+    letter-spacing: 1px;
+}
+        header {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 20px;
+
+    max-width: 1000px;   /* ← limita el ancho */
+    margin: 20px auto;   /* ← lo centra y quita lo gigante */
+    border-radius: 20px; /* ← bordes suaves */
+}
+       header img {
+    width: 85%;
+    max-width: 900px;
+    height: auto;
+    border-radius: 15px;
+}
+        .btn-banner {
+            display: block;
+            margin: 30px auto 10px;
+            background-color: #f48fb1;
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+
+        .btn-banner:hover {
+            background-color: #f06292;
+        }
+
+        .banner {
+            display: none;
+            background-color: #ffffff;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 900px;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+
+        .items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .item {
+            background-color: #ffeaf3;
+            padding: 20px;
+            border-radius: 15px;
+            font-weight: bold;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            cursor: pointer;
+        }
+
+        .info {
+            display: none;
+            font-size: 14px;
+            font-weight: normal;
+            text-align: justify;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        .a1 { animation-name: mover; }
+        .a2 { animation-name: girar; }
+        .a3 { animation-name: latir; }
+        .a4 { animation-name: aparecer; }
+        .a5 { animation-name: subir; }
+
+        @keyframes mover {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes girar {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(5deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        @keyframes latir {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes aparecer {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+
+        @keyframes subir {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0); }
+        }
+
+        .menu {
+            background-color: #ffffff;
+            margin: 30px auto;
+            width: 90%;
+            max-width: 900px;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+
+        .menu-item {
+            background-color: #f3c1da;
+            margin-bottom: 15px;
+            padding: 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 18px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .menu-item:hover {
+            background-color: #e89ac2;
+            transform: scale(1.03);
+        }
+
+        .menu-info {
+            display: none;
+            margin-top: 10px;
+            font-weight: normal;
+            text-align: justify;
+            color: #333;
+            background-color: #ffeaf3;
+            padding: 15px;
+            border-radius: 15px;
+            font-size: 15px;
+        }
+    </style>
+
+    <script>
+        function mostrarBanner() {
+            var banner = document.getElementById("bannerAnimado");
+            banner.style.display = (banner.style.display === "block") ? "none" : "block";
+        }
+
+        function mostrarObjetivo() {
+            var obj = document.getElementById("objetivo");
+            obj.style.display = (obj.style.display === "block") ? "none" : "block";
+        }
+
+        function toggleInfo(id) {
+            var info = document.getElementById(id);
+            info.style.display = (info.style.display === "block") ? "none" : "block";
+        }
+
+        function toggleMenu(id) {
+            var menu = document.getElementById(id);
+            menu.style.display = (menu.style.display === "block") ? "none" : "block";
+        }
+    </script>
+</head>
+
+<body>
+
+<div class="titulo">
+    CECYTEM<br>
+    Construyendo futuros libres y sanos
+</div>
+<header>
+    <img src="banner.jpg" alt="Cuida tu salud">
+</header>
+
+<button class="btn-banner" onclick="mostrarBanner()">Ver banner informativo</button>
+
+<div id="bannerAnimado" class="banner">
+    <div class="items">
+
+        <div class="item a1" onclick="toggleInfo('i1')">
+            ❓ ¿Qué son las sustancias psicoactivas?
+            <div class="info" id="i1">
+                Son sustancias que alteran el funcionamiento del cerebro.
+            </div>
+        </div>
+
+        <div class="item a2" onclick="toggleInfo('i2')">
+            ⚠️ Tipos de drogas
+            <div class="info" id="i2">
+                Pueden ser legales o ilegales y afectar la salud.
+            </div>
+        </div>
+
+        <div class="item a3" onclick="toggleInfo('i3')">
+            ❤️ Efectos en la salud
+            <div class="info" id="i3">
+                Provocan daños físicos y dependencia.
+            </div>
+        </div>
+
+        <div class="item a4" onclick="toggleInfo('i4')">
+            🧠 Riesgos emocionales
+            <div class="info" id="i4">
+                Generan ansiedad y problemas sociales.
+            </div>
+        </div>
+
+        <div class="item a5" onclick="toggleInfo('i5')">
+            🛑 Prevención y autocuidado
+            <div class="info" id="i5">
+                Informarse ayuda a tomar mejores decisiones.
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<button class="btn-banner" onclick="mostrarObjetivo()">Ver objetivo principal</button>
+
+<div id="objetivo" class="banner">
+    <h2 style="text-align:center; font-family:Georgia; border-bottom:3px solid #f4a3c2;">
+        Objetivo principal
+    </h2>
+    <p style="font-size:18px; text-align:justify;">
+        Prevenir y reducir el consumo de sustancias psicoactivas mediante acciones informativas
+        y de concientización dirigidas a adolescentes y comunidades.
+    </p>
+</div>
+
+<!-- ===== MENÚ MEJORADO ===== -->
+<div class="menu">
+    <h2 style="text-align:center; font-family:Georgia; margin-bottom:20px;">
+        Menú informativo
+    </h2>
+
+    <div class="menu-item" onclick="toggleMenu('m1')">
+        📌 ¿Qué son las sustancias psicoactivas?
+        <div class="menu-info" id="m1">
+            Son sustancias que actúan sobre el sistema nervioso central,
+            modificando la percepción, el estado de ánimo y la conducta.
+        </div>
+    </div>
+
+    <div class="menu-item" onclick="toggleMenu('m2')">
+        📌 Tipos de sustancias
+        <div class="menu-info" id="m2">
+            Existen sustancias legales como el alcohol y tabaco, e ilegales
+            como la marihuana, cocaína o metanfetaminas.
+        </div>
+    </div>
+
+    <div class="menu-item" onclick="toggleMenu('m3')">
+        📌 Consecuencias en la salud
+        <div class="menu-info" id="m3">
+            El consumo puede causar adicción, daños físicos, problemas
+            emocionales y afectar el rendimiento escolar.
+        </div>
+    </div>
+
+    <div class="menu-item" onclick="toggleMenu('m4')">
+        📌 Riesgos sociales
+        <div class="menu-info" id="m4">
+            Afecta la convivencia familiar, genera conflictos sociales
+            y puede llevar a situaciones de violencia.
+        </div>
+    </div>
+
+    <div class="menu-item" onclick="toggleMenu('m5')">
+        📌 Prevención
+        <div class="menu-info" id="m5">
+            La información, el autocuidado y el apoyo familiar ayudan
+            a prevenir el consumo de sustancias.
+        </div>
+    </div>
+</div>
+
+<!-- ===== RECUERDOS ===== -->
+<div style="
+    width:90%;
+    max-width:900px;
+    margin:40px auto;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap:20px;
+">
+
+    <div style="background:#7b4ea3; color:white; padding:20px; border-radius:20px;">
+        <h3>Recuerdo 1: ¿Qué son?</h3>
+        <p>Son sustancias que modifican el funcionamiento del cerebro.</p>
+    </div>
+
+    <div style="background:#7b4ea3; color:white; padding:20px; border-radius:20px;">
+        <h3>Recuerdo 2: Daños a la salud</h3>
+        <p>Pueden causar adicción y problemas emocionales.</p>
+    </div>
+
+    <div style="background:#7b4ea3; color:white; padding:20px; border-radius:20px;">
+        <h3>Recuerdo 3: Impacto social</h3>
+        <p>Afecta la convivencia familiar y escolar.</p>
+    </div>
+
+    <div style="background:#7b4ea3; color:white; padding:20px; border-radius:20px;">
+        <h3>Recuerdo 4: Riesgo en jóvenes</h3>
+        <p>El cerebro aún está en desarrollo.</p>
+    </div>
+
+    <div style="background:#7b4ea3; color:white; padding:20px; border-radius:20px;">
+        <h3>Recuerdo 5: Prevención</h3>
+        <p>Informarse ayuda a evitar el consumo.</p>
+    </div>
+
+    <div style="background:#7b4ea3; color:white; padding:20px; border-radius:20px;">
+        <h3>Recuerdo 6: Buscar apoyo</h3>
+        <p>Pedir ayuda es una decisión responsable.</p>
+    </div>
+
+</div>
+
+<!-- ===== INFORMACIÓN INTERACTIVA ===== -->
+<div style="
+    width:90%;
+    max-width:900px;
+    margin:40px auto;
+    background:#ffffff;
+    border-radius:25px;
+    padding:30px;
+    box-shadow:0 6px 15px rgba(0,0,0,0.2);
+">
+
+    <h2 style="
+        text-align:center;
+        font-family:Georgia;
+        color:#7b4ea3;
+        margin-bottom:25px;
+    ">
+        Información visual sobre las sustancias psicoactivas
+    </h2>
+
+    <!-- BOTÓN 1 -->
+    <div class="menu-item" onclick="toggleMenu('info1')">
+        🧠 ¿Qué son las drogas y sustancias psicoactivas?
+        <div class="menu-info" id="info1">
+            Las drogas o sustancias psicoactivas son compuestos que, al ingresar
+            al organismo, alteran el funcionamiento del sistema nervioso central.
+            Estas alteraciones afectan la percepción, el pensamiento, el estado
+            de ánimo, la conducta y las emociones. Pueden ser naturales,
+            sintéticas o semisintéticas.
+        </div>
+    </div>
+
+    <!-- BOTÓN 2 -->
+    <div class="menu-item" onclick="toggleMenu('info2')">
+        🧪 Clasificación de las sustancias psicoactivas
+        <div class="menu-info" id="info2">
+            Se clasifican según su efecto en el sistema nervioso en estimulantes,
+            depresoras, alucinógenas y perturbadoras. Esta clasificación permite
+            comprender los riesgos específicos de cada sustancia y sus efectos
+            sobre el cuerpo y la mente.
+        </div>
+    </div>
+
+    <!-- BOTÓN 3 -->
+    <div class="menu-item" onclick="toggleMenu('info3')">
+        ⚖️ Drogas legales e ilegales
+        <div class="menu-info" id="info3">
+            Las drogas legales como el alcohol, el tabaco y algunos medicamentos
+            pueden causar adicción si se consumen en exceso. Las drogas ilegales
+            están prohibidas debido a los graves daños físicos, psicológicos y
+            sociales que provocan.
+        </div>
+    </div>
+
+    <!-- BOTÓN 4 -->
+    <div class="menu-item" onclick="toggleMenu('info4')">
+        ⏱️ Efectos a corto plazo
+        <div class="menu-info" id="info4">
+            Los efectos inmediatos incluyen euforia, mareos, alteración de la
+            percepción, ansiedad, aumento del ritmo cardíaco y pérdida del
+            control. En algunos casos pueden presentarse ataques de pánico o
+            conductas peligrosas.
+        </div>
+    </div>
+
+    <!-- BOTÓN 5 -->
+    <div class="menu-item" onclick="toggleMenu('info5')">
+        🕒 Efectos a largo plazo
+        <div class="menu-info" id="info5">
+            El consumo prolongado puede causar daños permanentes en el cerebro,
+            trastornos mentales, enfermedades cardiovasculares, daño hepático y
+            pulmonar. También afecta la memoria, la concentración y la toma de
+            decisiones.
+        </div>
+    </div>
+
+    <!-- BOTÓN 6 -->
+    <div class="menu-item" onclick="toggleMenu('info6')">
+        🔗 Adicción y dependencia
+        <div class="menu-info" id="info6">
+            La adicción es una enfermedad crónica caracterizada por la necesidad
+            compulsiva de consumir una sustancia. Puede ser física o psicológica
+            y afecta la vida personal, familiar, escolar y social.
+        </div>
+    </div>
+
+    <!-- BOTÓN 7 -->
+    <div class="menu-item" onclick="toggleMenu('info7')">
+        🤝 Tratamiento y recuperación
+        <div class="menu-info" id="info7">
+            La adicción puede tratarse con apoyo profesional. Existen tratamientos
+            médicos, psicológicos y programas de rehabilitación. Con apoyo
+            familiar y seguimiento, es posible recuperar la salud y la calidad
+            de vida.
+        </div>
+    </div>
+
+</div>
+
+<!-- ===== RECURSOS Y JUEGOS ===== -->
+<div style="
+    width:90%;
+    max-width:900px;
+    margin:40px auto;
+    background:#ffffff;
+    border-radius:25px;
+    padding:30px;
+    box-shadow:0 6px 15px rgba(0,0,0,0.2);
+">
+
+    <h2 style="
+        text-align:center;
+        font-family:Georgia;
+        color:#7b4ea3;
+        margin-bottom:25px;
+    ">
+        Recursos educativos y actividades interactivas
+    </h2>
+
+    <button class="btn-banner" onclick="toggleMenu('recursosLinks')">
+        📂 Ver materiales y juegos
+    </button>
+
+    <div class="menu-info" id="recursosLinks">
+
+<h3>📄 Material educativo</h3>
+
+<div class="menu-item" onclick="toggleMenu('folletoImg')">
+    📘 Folleto informativo
+    <div class="menu-info" id="folletoImg">
+        <img src="folleto.jpg" alt="Folleto sobre drogas"
+        style="width:100%; max-width:350px; border-radius:12px; display:block; margin:auto;">
+    </div>
+</div>
+
+<div class="menu-item" onclick="toggleMenu('tripticoImg')">
+    📗 Tríptico
+    <div class="menu-info" id="tripticoImg">
+        <img src="triptico.jpg" alt="Tríptico sobre drogas"
+        style="width:100%; max-width:350px; border-radius:12px; display:block; margin:auto;">
+    </div>
+</div>
+
+<div class="menu-item" onclick="toggleMenu('infografiaImg')">
+    📙 Infografía
+    <div class="menu-info" id="infografiaImg">
+        <img src="infografia.jpg" alt="Infografía sobre drogas"
+        style="width:100%; max-width:350px; border-radius:12px; display:block; margin:auto;">
+    </div>
+</div>        
+        <h3>🎥 Video educativo</h3>
+<ul>
+    <li>
+        <a href="https://youtube.com/shorts/e83K3mM4KU0?si=uTODxy9SqEsOqQIS" target="_blank">
+            ▶️ Ver video sobre las drogas
+        </a>
+    </li>
+</ul>
+        <h3>🎮 Juegos interactivos</h3>
+        <ul>
+            <li>
+                <a href="https://es.educaplay.com/recursos-educativos/?q=drogas" target="_blank">
+                    🔤 Sopa de letras
+                </a>
+            </li>
+            <li>
+                <a href="https://www.educima.com/crosswordgenerator.php" target="_blank">
+                    ✏️ Crucigrama
+                </a>
+            </li>
+            <li>
+                <a href="https://wordwall.net/create/match-up" target="_blank">
+                    🧠 Memorama
+                </a>
+            </li>
+            <li>
+                <a href="https://www.jigsawplanet.com/" target="_blank">
+                    🧩 Rompecabezas
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</div>
+<!-- Pie de página -->
+<footer style="background-color:#1a1a1a; color:white; text-align:center; padding:20px; margin-top:30px; font-family: Arial, sans-serif;">
+
+  <p>&copy; 2025 | Todos los derechos reservados</p>
+  <p><strong>Elaborado por:</strong> Aylin Luis Cruz | Edad: 16 | Grupo: 303 | Semestre: Tercero</p>
+  <p>Por un óptimo funcionamiento se recomienda abrir la página en el navegador <strong>Google Chrome</strong>.</p>
+  
+  <!-- Redes sociales -->
+  <div style="margin:15px 0;">
+    <a href="https://www.facebook.com/AylinCrum" target="_blank" style="margin:0 10px; color:white; text-decoration:none;">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="30" style="vertical-align:middle;">
+      Aylin Crum
+    </a>
+    <a href="https://www.instagram.com/allynniii_/" target="_blank" style="margin:0 10px; color:white; text-decoration:none;">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="30" style="vertical-align:middle;">
+      allynniii_
+    </a>
+    <a href="https://www.tiktok.com/@ayliiiinncm_09" target="_blank" style="margin:0 10px; color:white; text-decoration:none;">
+      <img src="https://cdn-icons-png.flaticon.com/512/3046/3046120.png" alt="TikTok" width="30" style="vertical-align:middle;">
+      ayliiiinncm_09
+    </a>
+  </div>
+
+  <!-- Número de teléfono -->
+  <p>
+    <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Teléfono" width="25" style="vertical-align:middle; margin-right:5px;">
+    <strong>Teléfono:</strong> 7122255074
+  </p>
+
+  <!-- Iconos adicionales -->
+  <div style="margin:15px 0;">
+    <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png" alt="Chrome" width="30" style="margin:0 10px; vertical-align:middle;">
+    <img src="https://cdn-icons-png.flaticon.com/512/732/732237.png" alt="Blogger" width="30" style="margin:0 10px; vertical-align:middle;">
+    <img src="https://cdn-icons-png.flaticon.com/512/174/174881.png" alt="WordPress" width="30" style="margin:0 10px; vertical-align:middle;">
+  </div>
+
+  <!-- Dirección de la página -->
+  <p>Dirección de la página web: 
+    <a href="https://www.mi-proyecto-prevencion.com" target="_blank" style="color:#00aced;">
+      www.mi-proyecto-prevencion.com
+    </a>
+  </p>
+  
+  <!-- Fecha actual -->
+  <p>Fecha: 16 de Enero del 2026</p>
+
+</footer>
+</body>
+</html>
